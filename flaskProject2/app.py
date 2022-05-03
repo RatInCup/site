@@ -5,6 +5,17 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 f = open('users.txt', 'a')
 
+@app.route('/game')
+def game():                                                                          #Функция игры
+    return f'''<!doctype html>
+                <html lang="en">
+                  <head>
+                    <title>Привет, A!</title>
+                  </head>
+                  <body>
+                    <h1>Привет, A!</h1>
+                  </body>
+                </html>'''
 
 @app.route('/greeting/<username>')
 def greeting(username):
@@ -63,7 +74,7 @@ def form_sample():
                             <title>Пример формы</title>
                           </head>
                           <body>
-                            <h3>Зарегистрируйся прежде чем играть)</h3>
+                            <h3 align="center">Зарегистрируйся прежде чем играть)</h3>
                             <div>
                                 <form class="login_form" method="post">
                                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите адрес почты" name="email">
@@ -95,7 +106,7 @@ def form_sample():
         s = request.form['email'] + "   " + request.form['password'] + "    " + request.form['sex']
         f.write(s + '\n')
         f.close()
-        return "Форма отправлена"  #Игра
+        return game()  #Игра
 
 
 if __name__ == '__main__':
